@@ -1,0 +1,40 @@
+[
+{
+  "model": "users.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$720000$nu0tAqv5pXKYUpHk6xiHAL$/wMeZ6gQvZDS5mJ0yRgK9OxIWzt6xjJAiD7HWgnTzlA=",
+    "last_login": "2024-08-13T21:36:52.705Z",
+    "is_superuser": true,
+    "first_name": "",
+    "last_name": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2024-08-13T20:48:43.702Z",
+    "email": "admin@sky.pro",
+    "avatar": "",
+    "tg_chat_id": null,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$720000$jQOwImupFtzwhlEZlQAUkO$a6b5INYYLp47IM9P6YwSyHKnYD9fsX2UG82zoPrbsfE=",
+    "last_login": null,
+    "is_superuser": false,
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-08-13T21:38:05.028Z",
+    "email": "alexman-94@mail.ru",
+    "avatar": "",
+    "tg_chat_id": null,
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]

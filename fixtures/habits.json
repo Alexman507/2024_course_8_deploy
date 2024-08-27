@@ -1,0 +1,70 @@
+[
+{
+  "model": "habits.habit",
+  "pk": 1,
+  "fields": {
+    "user": 3,
+    "place": "Дома",
+    "time": "2024-08-16T08:00:00Z",
+    "action": "анжуманя",
+    "is_pleasant": true,
+    "related_habit": null,
+    "frequency_number": 7,
+    "frequency_unit": "days",
+    "reward": null,
+    "duration": "00:01:00",
+    "is_public": true
+  }
+},
+{
+  "model": "habits.habit",
+  "pk": 2,
+  "fields": {
+    "user": 3,
+    "place": "На улице",
+    "time": "2024-08-13T08:00:00Z",
+    "action": "трусца и шаг",
+    "is_pleasant": true,
+    "related_habit": null,
+    "frequency_number": 7,
+    "frequency_unit": "days",
+    "reward": null,
+    "duration": "00:02:00",
+    "is_public": true
+  }
+},
+{
+  "model": "habits.habit",
+  "pk": 3,
+  "fields": {
+    "user": 3,
+    "place": "На улице",
+    "time": "2024-08-16T08:00:00Z",
+    "action": "чилл с кайфом на смамейке",
+    "is_pleasant": false,
+    "related_habit": null,
+    "frequency_number": 7,
+    "frequency_unit": "days",
+    "reward": "вайб",
+    "duration": "00:02:00",
+    "is_public": true
+  }
+},
+{
+  "model": "habits.habit",
+  "pk": 4,
+  "fields": {
+    "user": 3,
+    "place": "На улице",
+    "time": "2024-08-16T08:00:00Z",
+    "action": "спринт",
+    "is_pleasant": false,
+    "related_habit": 2,
+    "frequency_number": 7,
+    "frequency_unit": "days",
+    "reward": null,
+    "duration": "00:02:00",
+    "is_public": true
+  }
+}
+]
