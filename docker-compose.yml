@@ -4,28 +4,32 @@ services:
   django:
     # Сборка образа для сервиса django из текущей директории
     build: .
+    tty: true
     # Задание имени контейнера для сервиса django
     container_name: django
     # Задание команды, которую нужно запустить при запуске контейнера для сервиса django
     command: sh -c 'python manage.py migrate && python manage.py runserver 0.0.0.0:8000'
     restart: on-failure
     volumes:
-      - .:/usr/src/app
+      - .:/app
     # Открытие порта на хостовой машине и перенаправление на порт в контейнере
     ports:
-      - 8000:8000
+      - "8000:8000"
     # Зависимость от другого сервиса
     depends_on:
-      - pgdb
+      pgdb:
+        condition: service_healthy
 
   pgdb:
     # Использование готового образа postgres
-    image: postgres
+    image: postgres:16-alpine
     # Задание переменных окружения для контейнера с postgres
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=123
+    env_file:
+      - .env
+#    environment:
+#      - POSTGRES_DB=postgres
+#      - POSTGRES_USER=postgres
+#      - POSTGRES_PASSWORD=123
      # Задание имени контейнера для сервиса pgdb
     container_name: pgdb
      # Связывание тома с директорией в контейнере для сохранения данных postgres
@@ -43,31 +47,35 @@ services:
     build: .
     tty: true
     restart: on-failure
-    environment:
-      DEBUG: "True"
-      CELERY_BROKER_URL: "redis://redis:6379/0"
-      CELERY_RESULT_BACKEND: "redis://redis:6379/0"
-      DJANGO_ALLOWED_HOSTS: "*"
+#    environment:
+#      DEBUG: "True"
+#      CELERY_BROKER_URL: "redis://redis:6379/0"
+#      CELERY_RESULT_BACKEND: "redis://redis:6379/0"
+#      DJANGO_ALLOWED_HOSTS: "*"
     command: celery -A config worker -l INFO
     volumes:
-      - .:/usr/src/app/
+      - .:/app
     depends_on:
       - redis
       - django
       - pgdb
+    env_file:
+      - .env
 
   celery-beat:
     build: .
     volumes:
-      - .:/usr/src/app/
-    environment:
-      DEBUG: "True"
-      CELERY_BROKER_URL: "redis://redis:6379/0"
-      DJANGO_ALLOWED_HOSTS: "*"
+      - .:/app
+#    environment:
+#      DEBUG: "True"
+#      CELERY_BROKER_URL: "redis://redis:6379/0"
+#      DJANGO_ALLOWED_HOSTS: "*"
     restart: on-failure
     depends_on:
       - redis
       - pgdb
-    command: [ "sh", "-c", "celery -A config beat -l INFO && celery -A config -l info -P gevent" ]
+    command: celery -A config beat -l INFO
+    env_file:
+      - .env
 volumes:
   pgdbdata:
