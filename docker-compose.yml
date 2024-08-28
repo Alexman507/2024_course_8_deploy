@@ -22,7 +22,7 @@ services:
     image: postgres
     # Задание переменных окружения для контейнера с postgres
     environment:
-      - POSTGRES_DB=drf
+      - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=123
      # Задание имени контейнера для сервиса pgdb
