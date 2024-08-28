@@ -200,7 +200,7 @@ CELERY_BEAT_SCHEDULE = {
     "task-name": {
         "task": "habits.tasks.habit",  # Путь к задаче
         "schedule": timedelta(
-            minutes=1
+            minutes=10
         ),  # Расписание выполнения задачи (например, каждые 10 минут)
     },
 }
