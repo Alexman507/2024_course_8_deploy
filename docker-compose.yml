@@ -46,7 +46,7 @@ services:
       DEBUG: "True"
       CELERY_BROKER_URL: "redis://redis:6379/0"
       CELERY_RESULT_BACKEND: "redis://redis:6379/0"
-      DJANGO_ALLOWED_HOSTS: "localhost 127.0.0.1 [::1]"
+      DJANGO_ALLOWED_HOSTS: "*"
     command: celery -A config worker -l INFO
     volumes:
       - .:/usr/src/app/
@@ -62,7 +62,7 @@ services:
     environment:
       DEBUG: "True"
       CELERY_BROKER_URL: "redis://redis:6379/0"
-      DJANGO_ALLOWED_HOSTS: "localhost 127.0.0.1 [::1]"
+      DJANGO_ALLOWED_HOSTS: "*"
     restart: on-failure
     depends_on:
       - redis
