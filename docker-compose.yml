@@ -8,6 +8,7 @@ services:
     container_name: django
     # Задание команды, которую нужно запустить при запуске контейнера для сервиса django
     command: sh -c 'python manage.py migrate && python manage.py runserver 0.0.0.0:8000'
+    restart: on-failure
     volumes:
       - .:/usr/src/app
     # Открытие порта на хостовой машине и перенаправление на порт в контейнере
