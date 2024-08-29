@@ -7,3 +7,5 @@
 docker-compose up --build -d
 docker-compose exec app python manage.py migrate
 
+#Если нужно создать суперпользователя (настройки переназначить можно в users/management/commands/csu.py)
+#docker-compose exec app python manage.py createsuperuser
